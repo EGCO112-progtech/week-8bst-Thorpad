@@ -2,7 +2,7 @@
 
 struct TreeNode {                                           
     struct TreeNode *leftPtr; // pointer to left subtree
-   int data; // node value                               
+    int data; // node value                               
     struct TreeNode *rightPtr; // pointer to right subtree
 }; // end structure treeNode 
         
@@ -28,6 +28,7 @@ void insertNode_R(TreeNodePtr * t,int value){
   }
   else{
      if(t->data>=value) //left
+         insertNode_R(&t)
         
      else //right
       
@@ -48,16 +49,24 @@ void insertNode( BST *b, int value ){
 while(!inserted){
    if(t->data >=value){
      /* move/insert to the left*/
-    
+         if(t->leftPtr==NULL) { 
+            t->leftPtr=new_node;
+            inserted=1;
+         }
+         else t = t->leftPtr;
      }
   	 
-  }
+  
    else{
 	      /* move/ insert to the right*/
-    
+         if(t->rightPtr==NULL) { 
+            t->rightPtr=new_node;
+            inserted=1;
+         }
+         else t = t->rightPtr;
     }
-	}
    
+
   }//end while		
   }//end else;
   b->size++;
@@ -78,3 +87,44 @@ void inOrder( TreeNodePtr treePtr )
       inOrder( treePtr->rightPtr ); //Recursion to the right
    } // end if                          
 } // end 
+
+
+
+void preOrder( TreeNodePtr treePtr )
+{       
+   if ( treePtr != NULL ) {        
+
+      printf("%3d",treePtr->data) ;  
+        
+      preOrder( treePtr->leftPtr ); 
+   
+      preOrder( treePtr->rightPtr ); 
+   }      
+}
+
+void postOrder( TreeNodePtr treePtr ){
+      if ( treePtr != NULL ) {        
+        
+      postOrder( treePtr->leftPtr ); 
+   
+      postOrder( treePtr->rightPtr ); 
+
+      printf("%3d",treePtr->data) ;  
+   }          
+}
+
+void treeOrder(TreeNodePtr treePtr, int n ){
+
+   int i;
+   if ( treePtr != NULL ) {        
+      treeOrder( treePtr->rightPtr,n+1);
+      //printf("count = %d \n",n);
+      for(i=0; i<n; i++)
+      printf("   ");
+      printf("%3d\n",treePtr->data) ;  
+      treeOrder( treePtr->leftPtr,n+1);
+    
+   }         
+
+
+}
