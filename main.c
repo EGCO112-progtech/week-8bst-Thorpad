@@ -15,7 +15,7 @@ for ( i = 1; i < argc; ++i ) {
   } // end for
 
 
-  /*
+  
    // traverse the tree preOrder
    printf("\nThe preOrder traversal is:\n" );
    preOrder( b.root );
@@ -28,8 +28,8 @@ for ( i = 1; i < argc; ++i ) {
    printf("\nThe postOrder traversal is:\n" );   
    postOrder( b.root );
 
-   */
 
+   printf("\n");
    //printf("\nThe treeOrder traversal is:\n" );   
    treeOrder( b.root , 0);
 
